@@ -149,11 +149,11 @@ class ProductService
     public function search(array $fields, Request $request, string $dateField = 'created_at', int $paginate = 15): LengthAwarePaginator
     {
         $allowedOrderFields = ['id', 'name', 'price', 'stock', 'created_at'];
-        $orderField = $request->get('order_field', 'created_at');
+        $orderField = $request->get('order_field', 'id');
         $orderDirection = $request->get('order_direction', 'asc');
 
         if (!in_array($orderField, $allowedOrderFields, true)) {
-            $orderField = 'created_at';
+            $orderField = 'id';
         }
         $orderDirection = in_array(strtolower($orderDirection), ['asc', 'desc']) ? $orderDirection : 'asc';
 
